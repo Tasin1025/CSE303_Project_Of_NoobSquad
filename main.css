@@ -1,0 +1,248 @@
+/* navbar css start*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --animation-speed: 1s;
+  --primary-color: rgb(75, 192, 192);
+  --background-color: rgb(226, 226, 226);
+  --secondary-color: #ff0;
+  --body-color: #fff;
+  --text-color: #111;
+  --font: "Poppins", sans-serif;
+}
+
+.dark__theme {
+  --primary-color: rgb(255, 99, 132,0.7);
+  --background-color: #2b343b;
+  --body-color: #212121;
+  --text-color: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  position: relative;
+  font-family: var(--font);
+  transition: all 1s ease;
+  display: flex;
+  user-select: none;
+  background: var(--background-color);
+}
+.content2 {
+    color: var(--text-color);
+    transition: all 0.4s;
+  }
+  
+.content1 {
+  color: var(--text-color);
+  margin-left: 330px;
+  transition: all 0.4s;
+  width: 100%;
+}
+.content1 h2{
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navigation1 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  max-height: 100vh;
+  width: 65px;
+  /*   height: 100vh; */
+  background-color: var(--background-color);
+  box-shadow: 15px 0 0 var(--primary-color);
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+  border-radius: 0.2rem;
+  width: 300px;
+}
+
+.navigation1:hover {
+  /* background-color: rgb(75, 192, 192); */
+}
+
+/* .navigation1:hover ~ .content1 {
+  margin-left: 330px;
+} */
+.navigation1 ul {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  padding: 2.5rem 0.5rem;
+  width: 100%;
+}
+
+.navigation1 ul li {
+  list-style: none;
+  width: 100%;
+  padding: 0.1rem;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  z-index: 100;
+}
+.navigation1 ul li:hover {
+  background-color:  rgb(75, 192, 192);
+  padding: 0.2rem;
+}
+.navigation1 ul li.active {
+  background-color: var(--primary-color);
+}
+
+/* .navigation1 ul li.active a::before {
+  content: "";
+  position: absolute;
+  background-color: var(--background-color);
+  width: 15px;
+  height: 15px;
+  right: 9.5px;
+  top: -16.5px;
+  border-radius: 50%;
+  box-shadow: 6px 6px 0 var(--primary-color);
+} */
+
+/* .navigation1 ul li.active a::after {
+  content: "";
+  position: absolute;
+  background-color: var(--background-color);
+  width: 15px;
+  height: 15px;
+  right: 9.5px;
+  bottom: -16.5px;
+  border-radius: 50%;
+  box-shadow: 6px -6px 0 var(--primary-color);
+} */
+
+.navigation1 ul li a {
+  position: relative;
+  display: flex;
+  width: 100%;
+  color: var(--text-color);
+  text-decoration: none;
+  align-items: center;
+}
+
+.navigation1 ul li a .icon {
+  position: relative;
+  min-width: 50px;
+  height: 50px;
+  line-height: 60px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.navigation1 ul li a .icon ion-icon {
+  position: relative;
+  font-size: 1.25rem;
+  z-index: 10;
+}
+
+.check {
+  position: fixed;
+  display: flex;
+  bottom: 40px;
+  right: 40px;
+  align-items: center;
+  background: darkgray;
+  border-radius: 100px;
+  padding: 0 10px;
+
+  color: var(--text-color);
+  flex-direction: row;
+}
+.check label {
+  margin: 10px;
+}
+.check .checkbox1 {
+  display: flex;
+  width: 1.1rem;
+  height: 1.1rem;
+  background-color: green;
+  color: green;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rem;
+  cursor: pointer;
+}
+
+.light {
+  --primary-color: #4187f6 !important;
+  --background-color: rgb(226, 226, 226) !important;
+  --body-color: #fff !important;
+  --text-color: #111;
+}
+
+/* navbar css start*/
+
+.flex-con {
+  display: flex;
+}
+
+.flex-con > div {
+  margin: 10px;
+  padding: 20px;
+
+}
+.container{
+  display: flex;
+  column-gap: 150px;
+}
+
+
+
+.submit{
+  background-color: rgb(255, 99, 132,0.7); 
+  border-radius: 5px; 
+  padding:1px 10px;
+  margin: 15px 0px;
+  width: 100%;
+  height: 80vh;
+}
+
+.submitDiv{
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  margin-top: 40px;
+  padding: 20px;
+  margin-left: 40px;
+}
+.submitDiv label{
+  font-size:large;
+  font:bold; 
+  width: 100px;
+}
+.input input{
+  width:200px; 
+  height: 20px;
+  border:none; 
+  padding:8px;
+  margin:8px;
+  border-radius: 5px;
+  background-color: #17759C;
+  color:white; 
+}
+.input input:hover{
+  border: none;
+  padding: 10px; 
+  outline: none;
+  background-color: #2b343b;
+
+}
+#submit-btn{
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+
+
+
+
