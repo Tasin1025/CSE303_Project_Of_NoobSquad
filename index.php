@@ -8,7 +8,7 @@
 <body>
 	<div class="box">
 		<form action="login.php" method="post">
-			<center><img src="../spms/img/logo.png" width="140" height="112"></center>
+			<center><img src="logo.png" width="140" height="112"></center>
 			<h2>Sign in</h2>
 			<input type="text" name = "id" id="userField" placeholder="User ID" required="required">
 			<input type="password" name = "pass" id="Password" placeholder="Password" >
