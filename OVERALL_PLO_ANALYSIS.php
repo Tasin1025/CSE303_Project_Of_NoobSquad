@@ -1,7 +1,8 @@
 <?php
 include 'connect.php';
 session_start();
-$studentID = "1910876";
+;
+$studentID = $_SESSION['id'];
 
 $sql = "SELECT plo.ploNum AS ploNum, 
 AVG((ans.markObtained/q.markPerQuestion)*100) AS percent
@@ -124,7 +125,7 @@ $plo = mysqli_query($conn, $sql);
             <?php
             while ($data = mysqli_fetch_array($plo)) {
 
-                $plonum[] = "PLO" . $data['ploNum'];
+                $plonum[] = "PLO " . $data['ploNum'];
                 $percent[] = $data['percent'];
             }
 
@@ -137,7 +138,7 @@ $plo = mysqli_query($conn, $sql);
 
                     labels: <?php echo json_encode($plonum) ?>,
                     datasets: [{
-                        label: <?php echo $studentID?> ,
+                        label: <?php echo $studentID ?>,
                         data: <?php echo json_encode($percent) ?>,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6)',
