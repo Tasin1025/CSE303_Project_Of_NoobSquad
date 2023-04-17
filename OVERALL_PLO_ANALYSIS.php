@@ -16,6 +16,7 @@ AND r.studentID='$studentID'
 GROUP BY plo.ploNum,r.studentID";
 
 $plo = mysqli_query($conn, $sql);
+// $plo = mysqli_query($conn, $sql);
 
 ?>
 <!DOCTYPE html>
