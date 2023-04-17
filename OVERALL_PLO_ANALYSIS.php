@@ -16,21 +16,7 @@ AND r.studentID='$studentID'
 GROUP BY plo.ploNum,r.studentID";
 
 $plo = mysqli_query($conn, $sql);
-// $nums=mysqli_num_rows($query);
 
-
-// $sql="SELECT* from student_t";
-
-// $query = mysqli_query($conn,$sql);
-// // $nums=mysqli_num_rows($query);
-// while ($res=mysqli_fetch_assoc($query)){
-//   echo $res['studentID']."<br>";
-// }
-// // $fet=mysqli_fetch_assoc($query);
-// // echo $fet[1];
-
-
-//
 ?>
 <!DOCTYPE html>
 <html lang="en">
