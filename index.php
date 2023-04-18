@@ -12,12 +12,9 @@
 			<h2>Sign in</h2>
 			<input type="text" name = "id" id="userField" placeholder="User ID" required="required">
 			<input type="password" name = "pass" id="Password" placeholder="Password" >
+
 			<div class="links">
 				<a href="#" class="forgot-pass">Forgot Password ?</a>
-
-
-
-
 			</div>
 			<input type="submit" id="login" value="Login">
 		</form>
