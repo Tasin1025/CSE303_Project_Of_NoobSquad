@@ -86,3 +86,28 @@ session_start();
         <div style="background-color: rgb(75, 192, 192); margin-right: 10px; text-align: center;">
             <h2>STUDENT PERFORMANCE MONITORING SYSTEM</h2>
         </div>
+
+   <!-- Create a new button -->
+        <div class="tab">
+            <button class="custom-btn btn-9 tablinks" onclick="openCity(event, 'London')">Create Course Outline </button>&nbsp;&nbsp;
+            <button class="custom-btn btn-10 tablinks" onclick="openCity(event, 'Paris')">View Course Online </button>&nbsp;&nbsp;
+            <button class="custom-btn btn-11 tablinks"  onclick="Submit()">Submit Grade<div class="dot"></div></button>
+        <button class="custom-btn btn-9">Input CSV FILE</button>
+        </div>
+        <!-- Div id starting... -->
+        <div id="London" class="tabcontent">
+            <h3>London</h3>
+            <p>London is the capital city of England.</p>
+        </div>
+        
+        <div id="Paris" class="tabcontent">
+            <h3>Paris</h3>
+            <p>Paris is the capital of France.</p> 
+        </div>
+
+        <div id="Containerbox" class="submitContainer" width="1200">
+            
+        </div>
+    </div>
+    <!-- JS file link -->
+    <script src="main.js" ></script>
