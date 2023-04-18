@@ -1223,3 +1223,22 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+CREATE TABLE backlog_data_t (
+    backlogID INTEGER NOT NULL AUTO_INCREMENT,
+    studentID int(11) NOT NULL,
+    edu_year INTEGER (4) NOT NULL,
+    edu_semester CHAR (6) NOT NULL,
+    enrolled_course CHAR (6) NOT NULL,
+    enrolled_section INTEGER (2) NOT NULL, 
+    obtained_marks NUMERIC (4, 1) NOT NULL,
+    facultyID int (11) NOT NULL,
+    time_stamp TIMESTAMP NOT NULL,
+    CONSTRAINT backlog_data_PK PRIMARY KEY (backlogID),
+    CONSTRAINT backlog_data_FK1 FOREIGN KEY (studentID) REFERENCES student_t (studentID),
+    CONSTRAINT backlog_data_FK2 FOREIGN KEY (facultyID) REFERENCES employee_t(employeeID)
+    );
+
+
+    
