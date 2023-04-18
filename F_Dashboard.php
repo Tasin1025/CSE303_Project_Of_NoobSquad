@@ -55,11 +55,11 @@ session_start();
             </span>
             <span class="title">Data Entry</span>
             </a>
-            <!-- backlog -->
+            <!-- backlog button-->
             <li class="list">
             <a href="F_Data Entry.php">
             <span class="icon">
-                <i class="fa-solid fa-bell fa-xl"></i>
+            <i class="fa-regular fa-database"></i>
             </span>
             <span class="title">Backlog Data</span>
             </a>
