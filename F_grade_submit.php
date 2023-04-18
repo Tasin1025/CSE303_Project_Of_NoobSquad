@@ -12,6 +12,7 @@ session_start();
     <title>Faculty Dashboard</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="middel_button.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/41c61c6dc3.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -86,12 +87,50 @@ session_start();
         <div style="background-color: rgb(75, 192, 192); margin-right: 10px; text-align: center;">
             <h2>STUDENT PERFORMANCE MONITORING SYSTEM</h2>
         </div>
+<div class="bg-primary-subtle  p-5 d-flex flex-column align-items-center rounded">        
+        <div class="input w-25 ">
+          <label class="input-text" for="inputGroupSelect01">Semester: </label>
+            <select class="form-select  bg-info-subtle" id="inputGroupSelect02">
+                <option selected>Autumn</option>
+                <option value="1">Summer</option>
+                <option value="2">Spring</option>
+            </select> 
+            </div>
+            <div class="input w-25">
+            <label class="input-text">Semester Year: </label>
+            <select class="form-select bg-info-subtle">
+                <option selected>2023</option>
+                <option value="1">2024</option>
+                <option value="2">2022</option>
+                <option value="2">2021</option>
+            </select>
+            </div>
+            <div class="input w-25">
+            <label class="input-text" for="inputGroupSelect01">Enrolled Course: </label>
+            <select class="form-select bg-info-subtle" id="inputGroupSelect02">
+                <option selected>CSE101</option>
+                <option value="1">EEE101</option>
+                <option value="2">ENG101</option>
+            </select>
+            </div>
+            <div class="w-25">
+                <label class="input-text">Enrolled Section: </label>
+                <input class="form-control w-100 bg-info-subtle" type="text">
+            </div>
+            <div class="w-25">
+                <label class="input-text">Student ID:  </label>
+                <input class="form-control w-100 bg-info-subtle" type="text">
+            </div>
+            <div class="w-25">
+                <label class="input-text">Obtained Marks: </label>
+                <input class="form-control w-100 bg-info-subtle" type="text">
+        </div>
 
-   <!-- Create a new button -->
-        <div class="tab">
-            <button class="custom-btn btn-11 tablinks"><a href="F_grade_submit.php" class="submit_btn_css">Submit Grade</a></button>
-            <!-- <a href="F_grade_submit.php">Submit Grade</a> -->
-        <button class="custom-btn btn-9">Input CSV FILE</button>
-        <button class="custom-btn btn-10"><a href="F_viewbacklog.php" class="submit_btn_css">View Backlog Data</a></button>
+            <button class="btn btn-primary w-25 mx-0 mt-4" 
+            >Submit</button>
+</div>
     <!-- JS file link -->
     <script src="main.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>

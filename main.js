@@ -36,49 +36,6 @@ function openCity(evt, cityName) {
 }
 
 
-
-
-
-function Submit(){
-  const submitContainer = document.getElementById("Containerbox"); 
-  submitContainer.textContent = ''; 
-  submitContainer.innerHTML += 
-  `<div class="submit">
-       <div class="submitDiv">
-          <div class="input">
-             <p>Student ID:</p> 
-             <input type="text" />
-          </div>
-          <div class="input">
-             <p>Educational Year:</p> 
-             <input type="text" />
-          </div>
-          <div class="input">
-             <p>Educational semester:</p> 
-             <input type="text" />
-          </div>
-          <div class="input">
-             <p>Enrolled Course:</p> 
-             <input type="text" />
-          </div>
-          <div class="input">
-             <p>Enrolled Section:</p> 
-             <input type="text" />
-          </div>
-          <div class="input">
-             <p>Obtained grade:</p> 
-             <input type="text" />
-          </div>
-       </div>
-       <button onclick="submit()" id="submit-btn" class="custom-btn btn-11" 
-       >Submit</button>
-  </div>`
-}
-function submit(){
- alert("successfully submitted"); 
-}
-
-
 document.getElementById("forgot").addEventListener("click", function(){
   alert("oops! contact with register office!"); 
   

@@ -86,9 +86,6 @@ session_start();
         <div class="tab">
             <button class="custom-btn btn-9 tablinks" onclick="openCity(event, 'London')">Create Course Outline </button>&nbsp;&nbsp;
             <button class="custom-btn btn-10 tablinks" onclick="openCity(event, 'Paris')">View Course Online </button>&nbsp;&nbsp;
-            <button class="custom-btn btn-11 tablinks"  onclick="Submit()">Submit Grade<div class="dot"></div></button>
-        <button class="custom-btn btn-9">Input CSV FILE</button>
-
         </div>
         
         <div id="London" class="tabcontent">
