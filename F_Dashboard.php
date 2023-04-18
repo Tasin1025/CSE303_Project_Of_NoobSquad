@@ -59,7 +59,7 @@ session_start();
             <li class="list">
             <a href="F_Backlog.php">
             <span class="icon">
-                 <i class="fa-regular fa-database"></i>
+                 <i class="fa-solid fa-database fa-xl"></i>
             </span>
             <span class="title">Backlog Data</span>
             </a>
