@@ -59,6 +59,14 @@ session_start();
                     <span class="title">Data Entry</span>
                 </a>
             </li>
+            <!-- backlog button-->
+            <li class="list">
+            <a href="F_Backlog.php">
+            <span class="icon">
+                 <i class="fa-solid fa-database fa-xl"></i>
+            </span>
+            <span class="title">Backlog Data</span>
+            </a>
             <li class="list">
                 <a href="index.php">
                     <span class="icon">
