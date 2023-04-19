@@ -31,7 +31,7 @@ CREATE TABLE `answer_t` (
   `answerID` int(11) NOT NULL,
   `answerDetails` mediumtext NOT NULL,
   `answerNum` int(11) NOT NULL,
-  `markObtained` int(11) DEFAULT NULL,
+  `markObtained` NUMERIC(4,1) DEFAULT NULL,
   `registrationID` int(11) NOT NULL,
   `questionID` int(11) NOT NULL,
   `examID` int(11) NOT NULL
@@ -1237,7 +1237,7 @@ CREATE TABLE backlog_data_t (
     time_stamp TIMESTAMP NOT NULL,
     
     CONSTRAINT backlog_data_PK PRIMARY KEY (backlogID),
-    CONSTRAINT backlog_data_FK1 FOREIGN KEY (studentID) REFERENCES student_t (studentID),
+    /*CONSTRAINT backlog_data_FK1 FOREIGN KEY (studentID) REFERENCES student_t (studentID), */
     CONSTRAINT backlog_data_FK2 FOREIGN KEY (facultyID) REFERENCES employee_t(employeeID)
     );
 

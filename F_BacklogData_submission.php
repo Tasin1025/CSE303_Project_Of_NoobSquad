@@ -145,14 +145,15 @@ session_start();
             $facultyID = $_SESSION['id'];
             $timeStamp = date("Y-m-d H:i:s");
 
-            echo $studentID;
-            echo $semester;
-            echo $year;
-            echo $courseID;
-            echo $section;
-            echo $marks;
-            echo $facultyID;
-            echo $timeStamp;
+            // echo $studentID;
+            // echo $semester;
+            // echo $year;
+            // echo $courseID;
+            // echo $section;
+            // echo $marks;
+            // echo $facultyID;
+            // echo $timeStamp;
+
             $backlogQuery="INSERT INTO backlog_data_t (studentID, edu_year, 
             edu_semester, enrolled_course, enrolled_section, obtained_marks,
             facultyID, time_stamp) VALUES 
@@ -167,15 +168,111 @@ session_start();
             $row=mysqli_fetch_assoc($result); 
             $backlogID=$row['backlogID'];
 
+            $sectionQuery="INSERT INTO section_t (sectionNum, semester, courseID, facultyID, year) VALUES 
+            ('$section', '$semester', '$courseID','$facultyID', '$year')";
+            $sectionTable = mysqli_query($conn, $sectionQuery);
+            
             //Getting sectionID
-            // $result = mysqli_query($conn,
-            // "SELECT MAX(sectionID) AS secID
-            // FROM section_t");
-            // $row=mysqli_fetch_assoc($result); 
-            // $secID=$row['secID'];
+            $result = mysqli_query($conn,
+            "SELECT MAX(sectionID) AS secID
+            FROM section_t");
+            $row=mysqli_fetch_assoc($result); 
+            $secID=$row['secID'];
 
-            $backlogCourseQuery = "INSERT INTO  backlog_course_t (backlogID, courseID) VALUES ('$backlogID', '$courseID')";
+            $backlogCourseQuery = "INSERT INTO backlog_course_t (backlogID, courseID) VALUES
+            ('$backlogID', '$courseID')";
             $backlogCourseTable = mysqli_query($conn, $backlogCourseQuery);
+
+            $backlogSectionQuery = "INSERT INTO backlog_section_t (backlogID, sectionID) VALUES
+            ('$backlogID', '$secID')";
+            $backlogSectionTable = mysqli_query($conn, $backlogSectionQuery);
+
+            $registrationQuery="INSERT INTO registration_t (sectionID, studentID) VALUES 
+            ('$secID', '$studentID')";
+            $registrationTable = mysqli_query($conn, $registrationQuery);
+
+            $examName="Backlog";
+            $examQuery="INSERT INTO exam_t (sectionID, examName) VALUES 
+            ('$secID', 'Backlog')";
+            $examTable = mysqli_query($conn, $examQuery);
+
+            //Getting registrationID
+            $result = mysqli_query($conn,
+            "SELECT MAX(registrationID) AS regID
+            FROM registration_t");
+            $row=mysqli_fetch_assoc($result);
+            $regID=$row['regID'];
+
+            //Getting examID
+            $result = mysqli_query($conn,
+            "SELECT MAX(examID) AS examID
+            FROM exam_t");
+            $row=mysqli_fetch_assoc($result);
+            $examID=$row['examID'];
+            
+            
+            $ansMark = $marks/10;
+            $answerQuery="INSERT INTO answer_t (answerDetails, answerNum, markObtained,
+            registrationID,questionID, examID) VALUES
+            ('Backlog', 1, '$ansMark', '$regID', 0, '$examID'),
+            ('Backlog', 2, '$ansMark', '$regID', 0, '$examID'),
+            ('Backlog', 3, '$ansMark', '$regID', 0, '$examID'),
+            ('Backlog', 4, '$ansMark', '$regID', 0, '$examID')";
+            $answerTable = mysqli_query($conn, $answerQuery);
+
+            $questionQuery="INSERT INTO question_t (questionDetails, markPerQuestion, questionNum,
+            difficultyLevel, examID, courseID, coNum) VALUES
+            ('Backlog', 10, 1, FLOOR(RAND()* (5-1+1))+1, '$examID', '$courseID', 1),
+            ('Backlog', 10, 2, FLOOR(RAND()* (5-1+1))+1, '$examID', '$courseID', 2),
+            ('Backlog', 10, 3, FLOOR(RAND()* (5-1+1))+1, '$examID', '$courseID', 3),
+            ('Backlog', 10, 4, FLOOR(RAND()* (5-1+1))+1, '$examID', '$courseID', 4)";
+            $questionTable = mysqli_query($conn, $questionQuery);
+
+            //PO Table
+            $programID=0;
+            if($courseID=="CSE101"){
+                $programID=13;}
+            elseif($courseID=="EEE131"){
+                $programID=20;}
+            elseif($courseID=="ENG101"){
+                $programID=9; }
+
+            $poQuery="INSERT INTO po_t (poNum, programID) VALUES
+            (FLOOR(RAND()* (12-1+1))+1, '$programID'), 
+            (FLOOR(RAND()* (12-1+1))+1, '$programID'),
+            (FLOOR(RAND()* (12-1+1))+1, '$programID'),
+            (FLOOR(RAND()* (12-1+1))+1, '$programID')";
+            $poTable = mysqli_query($conn, $poQuery);
+
+            //Getting po/ploID
+            $result = mysqli_query($conn,
+            "SELECT MAX(poID) AS poID
+            FROM po_t");
+            $row=mysqli_fetch_assoc($result);
+            $poID=$row['poID'];
+
+            //PLO Table :)
+            $minPLO =$poID-3;
+            $ploQuery="INSERT INTO plo_t (ploNum, programID)
+            SELECT poNum, programID
+            FROM po_t
+            Where poID Between '$minPLO' AND '$poID'";
+            $ploTable = mysqli_query($conn, $ploQuery);
+            $ploID=$poID;
+
+
+            //CO Table
+            $coQuery="INSERT INTO co_t (coNum, courseID, ploID, poID) VALUES
+            (1, '$courseID', '$ploID', '$poID'),
+            (2, '$courseID', '$ploID', '$poID'),
+            (3, '$courseID', '$ploID', '$poID'),
+            (4, '$courseID', '$ploID', '$poID')";
+            $coTable = mysqli_query($conn, $coQuery);
+
+
+
+            // $backlogCourseQuery = "INSERT INTO  backlog_course_t (backlogID, courseID) VALUES ('$backlogID', '$courseID')";
+            // $backlogCourseTable = mysqli_query($conn, $backlogCourseQuery);
 
             // $backlogSectionQuery = "INSERT INTO  backlog_section_t (backlogID, secID) VALUES 
             // ('$backlogID', '$sectionID')";
