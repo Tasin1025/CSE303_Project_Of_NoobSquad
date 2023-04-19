@@ -87,48 +87,74 @@ session_start();
         <div style="background-color: rgb(75, 192, 192); margin-right: 10px; text-align: center;">
             <h2>STUDENT PERFORMANCE MONITORING SYSTEM</h2>
         </div>
-<div class="bg-primary-subtle  p-5 d-flex flex-column align-items-center rounded">        
+        <form method="POST">
+    <div class="bg-primary-subtle  p-5 d-flex flex-column align-items-center rounded">     
         <div class="input w-25 ">
           <label class="input-text" for="inputGroupSelect01">Semester: </label>
-            <select class="form-select  bg-info-subtle" id="inputGroupSelect02">
-                <option selected>Autumn</option>
-                <option value="1">Summer</option>
-                <option value="2">Spring</option>
+            <select name="semester" class="form-select  bg-info-subtle" id="inputGroupSelect02">
+                <option value="Autumn" selected>Autumn</option>
+                <option value="Summer">Summer</option>
+                <option value="Spring">Spring</option>
             </select> 
             </div>
             <div class="input w-25">
             <label class="input-text">Semester Year: </label>
-            <select class="form-select bg-info-subtle">
-                <option selected>2023</option>
-                <option value="1">2024</option>
-                <option value="2">2022</option>
-                <option value="2">2021</option>
+            <select  name="year" class="form-select bg-info-subtle">
+                <option value="2020" selected>2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
             </select>
             </div>
             <div class="input w-25">
             <label class="input-text" for="inputGroupSelect01">Enrolled Course: </label>
-            <select class="form-select bg-info-subtle" id="inputGroupSelect02">
-                <option selected>CSE101</option>
-                <option value="1">EEE101</option>
-                <option value="2">ENG101</option>
+            <select  name="courseID" class="form-select bg-info-subtle" id="inputGroupSelect02">
+                <option value="CSE101" selected>CSE101</option>
+                <option value="EEE131">EEE131</option>
+                <option value="ENG101">ENG101</option>
             </select>
             </div>
             <div class="w-25">
                 <label class="input-text">Enrolled Section: </label>
-                <input class="form-control w-100 bg-info-subtle" type="text">
+                <input class="form-control w-100 bg-info-subtle" type="text" name="section">
             </div>
             <div class="w-25">
                 <label class="input-text">Student ID:  </label>
-                <input class="form-control w-100 bg-info-subtle" type="text">
+                <input class="form-control w-100 bg-info-subtle" type="text" name="studentID">
             </div>
             <div class="w-25">
                 <label class="input-text">Obtained Marks: </label>
-                <input class="form-control w-100 bg-info-subtle" type="text">
+                <input class="form-control w-100 bg-info-subtle" type="text" name="marks">
         </div>
 
-            <button class="btn btn-primary w-25 mx-0 mt-4" 
+            <button name="submit" class="btn btn-primary w-25 mx-0 mt-4" 
             >Submit</button>
+</form>
 </div>
+<?php
+        if (isset($_POST['submit'])) {
+            $studentID = $_POST['studentID'];
+            $semester = $_POST['semester'];
+            $year = $_POST['year'];
+            $courseID = $_POST['courseID'];
+            $section = $_POST['section'];
+            $marks = $_POST['marks'];
+            $facultyID = $_SESSION['id'];
+            $timeStamp = date("Y-m-d");
+
+            echo $studentID;
+            echo $semester;
+            echo $year;
+            echo $courseID;
+            echo $section;
+            echo $marks;
+            echo $facultyID;
+            echo $timeStamp;
+        
+        
+        }
+?>
+    
     <!-- JS file link -->
     <script src="main.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
