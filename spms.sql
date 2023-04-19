@@ -1235,10 +1235,30 @@ CREATE TABLE backlog_data_t (
     obtained_marks NUMERIC (4, 1) NOT NULL,
     facultyID int (11) NOT NULL,
     time_stamp TIMESTAMP NOT NULL,
+    
     CONSTRAINT backlog_data_PK PRIMARY KEY (backlogID),
     CONSTRAINT backlog_data_FK1 FOREIGN KEY (studentID) REFERENCES student_t (studentID),
     CONSTRAINT backlog_data_FK2 FOREIGN KEY (facultyID) REFERENCES employee_t(employeeID)
     );
 
+    CREATE TABLE backlog_course_t (
+    backlog_courseID INTEGER NOT NULL AUTO_INCREMENT,
+    backlogID INTEGER NOT NULL, 
+    courseID varchar(6),
+
+    CONSTRAINT backlog_course_PK PRIMARY KEY (backlog_courseID),
+    CONSTRAINT backlog_course_FK1 FOREIGN KEY (backlogID) REFERENCES backlog_data_t (backlogID),
+    CONSTRAINT backlog_course_FK2 FOREIGN KEY (courseID) REFERENCES course_t(courseID)
+    );
+
+CREATE TABLE backlog_section_t (
+    backlog_sectionID INTEGER NOT NULL AUTO_INCREMENT,
+    backlogID INTEGER NOT NULL, 
+    sectionID INT (11),
+
+    CONSTRAINT backlog_section_PK PRIMARY KEY (backlog_sectionID),
+    CONSTRAINT backlog_section_FK1 FOREIGN KEY (backlogID) REFERENCES backlog_data_t (backlogID),
+    CONSTRAINT backlog_section_FK2 FOREIGN KEY (sectionID) REFERENCES section_t(sectionID)
+    );
 
     
