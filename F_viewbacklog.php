@@ -61,12 +61,12 @@ session_start();
             </li>
             <!-- backlog button-->
             <li class="list">
-            <a href="F_Backlog.php">
-            <span class="icon">
-                 <i class="fa-solid fa-database fa-xl"></i>
-            </span>
-            <span class="title">Backlog Data</span>
-            </a>
+                <a href="F_Backlog.php">
+                    <span class="icon">
+                        <i class="fa-solid fa-database fa-xl"></i>
+                    </span>
+                    <span class="title">Backlog Data</span>
+                </a>
             <li class="list">
                 <a href="index.php">
                     <span class="icon">
@@ -87,7 +87,81 @@ session_start();
         <div style="background-color: rgb(75, 192, 192); margin-right: 10px; text-align: center;">
             <h2>STUDENT PERFORMANCE MONITORING SYSTEM</h2>
         </div>
-<div class="bg-primary-subtle  p-5 d-flex flex-column align-items-center rounded">        
+
+
+
+        <table class="table table-hover text center">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Backlog ID</th>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Section</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Faculty ID</th>
+                    <th scope="col">Time Stamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include 'connect.php';
+                // session_start();
+
+                $backlogData = "SELECT *
+                FROM backlog_data_t
+                WHERE facultyID = '$_SESSION[id]'";
+                $result = mysqli_query($conn, $backlogData);
+                while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                <?php
+                 $grade="Z";
+                if( $row['obtained_marks'] >= 90 && $row['obtained_marks']<=100)
+                    $grade="A";
+                elseif( $row['obtained_marks'] >= 85 && $row['obtained_marks']<=89)
+                    $grade="A-";
+                elseif( $row['obtained_marks'] >= 80 && $row['obtained_marks']<=84)
+                    $grade="B";
+                elseif( $row['obtained_marks'] >= 75 && $row['obtained_marks']<=79)
+                    $grade="B+";
+                elseif( $row['obtained_marks'] >= 70 && $row['obtained_marks']<=74)
+                    $grade="B-";
+                elseif( $row['obtained_marks'] >= 60 && $row['obtained_marks']<=69)
+                    $grade="C+";
+                elseif( $row['obtained_marks'] >= 65 && $row['obtained_marks']<=64)
+                    $grade="C";
+                elseif( $row['obtained_marks'] >= 55 && $row['obtained_marks']<=59)
+                    $grade="C-";
+                elseif( $row['obtained_marks'] >= 50 && $row['obtained_marks']<=54)
+                    $grade="D+";
+                elseif( $row['obtained_marks'] >= 45 && $row['obtained_marks']<=49)
+                    $grade="D";
+                elseif( $row['obtained_marks'] < 44 )
+                    $grade="F";
+                ?>
+                
+                    <tr>
+                        <!-- <th scope="row">1</th> -->
+                        <td><?php echo $row['backlogID']; ?></td>
+                        <td><?php echo $row['studentID']; ?></td>
+                        <td><?php echo $grade; ?></td>
+                        <td><?php echo $row['enrolled_course']; ?></td>
+                        <td><?php echo $row['enrolled_section']; ?></td>
+                        <td><?php echo $row['edu_semester']; ?></td>
+                        <td><?php echo $row['edu_year']; ?></td>
+                        <td><?php echo $row['facultyID']; ?></td>
+                        <td><?php echo $row['time_stamp']; ?></td>
+                    </tr>
+
+                <?php
+                }
+
+                ?>
+
+            </tbody>
+        </table>
+        <!-- <div class="bg-primary-subtle  p-5 d-flex flex-column align-items-center rounded">        
         <div class="input w-25 ">
           <label class="input-text" for="inputGroupSelect01">Educational Semester: </label>
             <select class="form-select  bg-info-subtle" id="inputGroupSelect02">
@@ -137,9 +211,10 @@ session_start();
                 <label class="input-text">Time Stamp: </label>
                 <input class="form-control w-100 bg-info-subtle" type="text">
         </div>
-</div>
-    <!-- JS file link -->
-    <script src="main.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</div> -->
+        <!-- JS file link -->
+        <script src="main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
+
 </html>

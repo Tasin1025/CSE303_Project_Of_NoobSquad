@@ -145,7 +145,7 @@ CREATE TABLE `course_t` (
 --
 
 INSERT INTO `course_t` (`courseID`, `courseName`, `numOfCredits`, `courseType`, `programID`, `preReqID`) VALUES
-('CSC101', 'Introduction to Computer Science', 3, 'foundation', 13, NULL),
+('CSE101', 'Introduction to Computer Programming', 3, 'foundation', 13, NULL),
 ('EEE131', 'Electrical Circuit-I', 3, 'core', 9, NULL),
 ('EEE231', 'Signals & Systems', 3, 'core', 9, NULL),
 ('EEE233', 'Energy Conversion-I', 3, 'core', 9, NULL),
