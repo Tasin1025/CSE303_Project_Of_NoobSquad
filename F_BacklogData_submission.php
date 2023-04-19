@@ -132,7 +132,10 @@ session_start();
 </form>
 </div>
 <?php
+
         if (isset($_POST['submit'])) {
+            //include 'connect.php';
+            //session_start();
             $studentID = $_POST['studentID'];
             $semester = $_POST['semester'];
             $year = $_POST['year'];
@@ -140,7 +143,7 @@ session_start();
             $section = $_POST['section'];
             $marks = $_POST['marks'];
             $facultyID = $_SESSION['id'];
-            $timeStamp = date("Y-m-d");
+            $timeStamp = date("Y-m-d H:i:s");
 
             echo $studentID;
             echo $semester;
@@ -150,8 +153,33 @@ session_start();
             echo $marks;
             echo $facultyID;
             echo $timeStamp;
-        
-        
+            $backlogQuery="INSERT INTO backlog_data_t (studentID, edu_year, 
+            edu_semester, enrolled_course, enrolled_section, obtained_marks,
+            facultyID, time_stamp) VALUES 
+            ('$studentID', '$year', '$semester', '$courseID',
+            '$section', '$marks', '$facultyID', '$timeStamp')";
+            $backlogTable = mysqli_query($conn, $backlogQuery);
+            
+            //Getting backlogID
+            $result = mysqli_query($conn,
+            "SELECT MAX(backlogID) AS backlogID
+            FROM backlog_data_t");
+            $row=mysqli_fetch_assoc($result); 
+            $backlogID=$row['backlogID'];
+
+            //Getting sectionID
+            // $result = mysqli_query($conn,
+            // "SELECT MAX(sectionID) AS secID
+            // FROM section_t");
+            // $row=mysqli_fetch_assoc($result); 
+            // $secID=$row['secID'];
+
+            $backlogCourseQuery = "INSERT INTO  backlog_course_t (backlogID, courseID) VALUES ('$backlogID', '$courseID')";
+            $backlogCourseTable = mysqli_query($conn, $backlogCourseQuery);
+
+            // $backlogSectionQuery = "INSERT INTO  backlog_section_t (backlogID, secID) VALUES 
+            // ('$backlogID', '$sectionID')";
+            // $backlogSectionTable = mysqli_query($conn, $backlogSectionQuery);
         }
 ?>
     
