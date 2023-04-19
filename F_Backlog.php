@@ -89,9 +89,9 @@ session_start();
 
    <!-- Create a new button -->
         <div class="tab">
-            <button class="custom-btn btn-11 tablinks"><a href="F_BacklogData_submission.php" class="submit_btn_css">Submit Backlog Data by form</a></button>
+            <button class="custom-btn btn-11 tablinks"><a href="F_BacklogData_Submission.php" class="submit_btn_css">Submit Backlog Data by form</a></button>
             <!-- <a href="F_grade_submit.php">Submit Grade</a> -->
-        <button class="custom-btn btn-9">Submit Backlog Data by importing CSV FILE</button>
+        <button class="custom-btn btn-9 tablinks"><a href="F_Import_CSV_File.php" class="submit_btn_css">Submit Backlog Data by importing CSV FILE</a></button>
         <button class="custom-btn btn-10"><a href="F_viewbacklog.php" class="submit_btn_css">View Backlog Data</a></button>
     <!-- JS file link -->
     <script src="main.js" ></script>
