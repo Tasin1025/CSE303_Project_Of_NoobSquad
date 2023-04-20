@@ -40,7 +40,7 @@ session_start();
             <li class="list">
                 <a href="F_Backlog.php">
                     <span class="icon">
-                        <i class="fa-brands fa-react fa-beat-fade fa-xl"></i>
+                        <i class="fa-brands fa-react fa-xl"></i>
                     </span>
                     <span class="title">PLO Analysis</span>
                 </a>
@@ -65,7 +65,7 @@ session_start();
             <li class="list active">
             <a href="F_Backlog.php">
             <span class="icon">
-                 <i class="fa-solid fa-database fa-xl"></i>
+                 <i class="fa-solid fa-database fa-xl fa-beat-fade"></i>
             </span>
             <span class="title">Backlog Data</span>
             </a>
