@@ -1,6 +1,7 @@
 <?php
 include 'connect.php';
 session_start();
+$message = '<label class="text-danger">Please Select File</label>';
 if (isset($_POST["upload"])) {
     if ($_FILES['fileToUpload']['name']) {
         $filename = explode(".", $_FILES['fileToUpload']['name']);
@@ -175,10 +176,11 @@ if (isset($_POST["upload"])) {
         $message = '<label class="text-danger">Please Select File</label>';
     }
 
-    if (isset($_GET["updation"])) {
+    
+}
+if (isset($_GET["updation"])) {
         $message = '<label class="text-success">Update Done</label>';
     }
-}
 
 //  UPDATE backlog_data_t
 //  SET studentID='studentID',
@@ -290,7 +292,7 @@ if (isset($_POST["upload"])) {
         </div>
         <?php
 
-        echo $message;
+         echo $message;
 
         // if (isset($_POST['submit'])) {
         //     if (isset($_FILES['csv_file']) && $_FILES['csv_file']['error'] == 0) {

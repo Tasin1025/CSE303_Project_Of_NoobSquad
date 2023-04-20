@@ -15,11 +15,12 @@ session_start();
         $message='<label class="text-danger">Please Select File</label>';
     }
 
-    if(isset($_GET["updation"])){
-        $message='<label class="text-success">Update Done</label>';
-    }
+    
 
  }
+ if(isset($_GET["updation"])){
+    $message='<label class="text-success">Update Done</label>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
