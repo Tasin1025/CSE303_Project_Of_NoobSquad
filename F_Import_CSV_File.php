@@ -283,7 +283,7 @@ if (isset($_GET["updation"])) {
         </div>
         <div class="tab">
             <form method="post" enctype="multipart/form-data">
-                <p><label>Please Select File (Only CSV File)</label></p>
+                
                 <input type="file" name="fileToUpload" id="fileToUpload">
                 <input type="submit" name="upload" class="custom-btn btn-11 tablinks" value="Upload">
                 <button class="custom-btn btn-10 tablinks"><a href="F_viewbacklog.php" class="submit_btn_css">View
