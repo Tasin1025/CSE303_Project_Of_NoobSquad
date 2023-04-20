@@ -35,8 +35,8 @@ session_start();
                     <span class="title">Dashboard</span>
                 </a>
             </li>
-            <li class="list active">
-                <a href="#">
+            <li class="list">
+                <a href="F_Backlog.php">
                     <span class="icon">
                         <i class="fa-brands fa-react fa-beat-fade fa-xl"></i>
                     </span>
@@ -60,7 +60,7 @@ session_start();
                 </a>
             </li>
             <!-- backlog button-->
-            <li class="list">
+            <li class="list active">
             <a href="F_Backlog.php">
             <span class="icon">
                  <i class="fa-solid fa-database fa-xl"></i>
