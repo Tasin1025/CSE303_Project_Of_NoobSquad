@@ -15,6 +15,8 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/41c61c6dc3.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- submit CND -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -127,8 +129,52 @@ session_start();
                 <input class="form-control w-100 bg-info-subtle" type="text" name="marks">
         </div>
 
-            <button name="submit" class="btn btn-primary w-25 mx-0 mt-4" 
-            >Submit</button>
+            <!-- <button name="submit" class="btn btn-primary w-25 mx-0 mt-4" 
+            >Submit</button> -->
+            <button name="submit" class="btn btn-primary w-25 mx-0 mt-4" onclick="submitt()">Submit
+        </button>
+<script>
+    // function submitt() {
+    //     alert("Submitted");
+    // Hover code
+
+//     function submitt() {
+//   Swal.fire({
+//     title: 'Submitted!',
+//     text: 'Your form has been submitted successfully.',
+//     icon: 'success',
+//     confirmButtonText: 'OK',
+//     backdrop: `
+//       rgba(0,0,123,0.4)
+//       url("https://media.giphy.com/media/3o7buirYcmV5nSwIRW/giphy.gif")
+//       left top
+//       no-repeat
+//     `,
+//     timer: 60000 // in milliseconds
+//   });
+// }
+function submitt() {
+  Swal.fire({
+    title: 'Submitted!',
+    text: 'Your form has been submitted successfully.',
+    icon: 'success',
+    confirmButtonText: 'OK',
+    backdrop: `
+      rgba(0,0,123,0.4)
+      url("https://media.giphy.com/media/3o7buirYcmV5nSwIRW/giphy.gif")
+      left top
+      no-repeat
+    `,
+    timer: 20000, // in milliseconds
+    willClose: () => {
+      // Add any code you want to execute when the modal is closed.
+      console.log('Modal closed.');
+    }
+  });
+}
+            
+</script>
+
 </form>
 </div>
 <?php
