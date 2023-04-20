@@ -203,6 +203,35 @@ session_start();
             $row=mysqli_fetch_assoc($result);
             $regID=$row['regID'];
 
+            //student course performance
+            $gradePoint=0;
+            if( $marks >= 90 && $marks<=100)
+                $gradePoint=4.0;
+            elseif( $marks>= 85 && $marks<=89)
+                $gradePoint=3.7;
+            elseif($marks >= 80 && $marks<=84)
+                $gradePoint=3.3;
+            elseif( $marks >= 75 && $marks<=79)
+                $gradePoint=3.0;
+            elseif( $marks >= 70 && $marks <=74)
+                $gradePoint=2.7;
+            elseif( $marks >= 60 && $marks <=69)
+                $gradePoint=2.3;
+            elseif( $marks >= 65 && $marks <=64)
+                $gradePoint=2.0;
+            elseif( $marks >= 55 && $marks <=59)
+                $gradePoint=1.7;
+            elseif( $marks >= 50 && $marks <=54)
+                $gradePoint=1.3;
+            elseif( $marks >= 45 && $marks<=49)
+                $gradePoint=1.0;
+            elseif( $marks < 44 )
+                $gradePoint=0.0;
+            $studCoursePerformanceQuery = "INSERT INTO student_course_performance_t(registrationID, totalMarksObtained,gradePoint)
+            VALUES ('$regID', '$marks', '$gradePoint')";
+            $studCoursePerformanceTable = mysqli_query($conn, $studCoursePerformanceQuery);
+            
+            
             //Getting examID
             $result = mysqli_query($conn,
             "SELECT MAX(examID) AS examID
