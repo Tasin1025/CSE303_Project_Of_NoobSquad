@@ -34,8 +34,8 @@ session_start();
                     <span class="title">Dashboard</span>
                 </a>
             </li>
-            <li class="list active">
-                <a href="#">
+            <li class="list">
+                <a href="F_PLO_Analysis.php">
                     <span class="icon">
                         <i class="fa-brands fa-react fa-beat-fade fa-xl"></i>
                     </span>
@@ -59,8 +59,8 @@ session_start();
                 </a>
             </li>
             <!-- backlog button-->
-            <li class="list">
-            <a href="F_Backlog.php">
+            <li class="list active">
+            <a href="#">
             <span class="icon">
                  <i class="fa-solid fa-database fa-xl"></i>
             </span>
@@ -89,9 +89,9 @@ session_start();
 
    <!-- Create a new button -->
         <div class="tab">
-            <button class="custom-btn btn-11 tablinks"><a href="F_BacklogData_Submission.php" class="submit_btn_css">Submit Backlog Data by form</a></button>
-            <!-- <a href="F_grade_submit.php">Submit Grade</a> -->
+        <button class="custom-btn btn-11 tablinks"><a href="F_BacklogData_Submission.php" class="submit_btn_css">Submit Backlog Data by form</a></button>
+    <!-- <a href="F_grade_submit.php">Submit Grade</a> -->
         <button class="custom-btn btn-9 tablinks"><a href="F_Import_CSV_File.php" class="submit_btn_css">Submit Backlog Data by importing CSV FILE</a></button>
-        <button class="custom-btn btn-10"><a href="F_viewbacklog.php" class="submit_btn_css">View Backlog Data</a></button>
+        <button class="custom-btn btn-10 tablinks"><a href="F_viewbacklog.php" class="submit_btn_css">View Backlog Data</a></button>
     <!-- JS file link -->
     <script src="main.js" ></script>

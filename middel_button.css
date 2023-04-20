@@ -147,8 +147,8 @@
 
 /* 10 */
 .btn-10 {
-    background: rgb(22,9,240);
-  background: linear-gradient(0deg, rgba(22,9,240,1) 0%, rgba(49,110,244,1) 100%);
+    background: rgb(240, 9, 155);
+  background: linear-gradient(0deg, rgb(9, 240, 198,1) 0%, rgb(5, 165, 128,1) 100%);
     color: #fff;
     border: none;
     transition: all 0.3s ease;
@@ -205,8 +205,9 @@
   opacity: .7;
 }
 .btn-11:active{
-  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
-              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+  box-shadow: 
+    4px 4px 6px 0 rgba(255,255,255,.3),
+    -4px -4px 6px 0 rgba(116, 125, 136, .2), 
     inset -4px -4px 6px 0 rgba(255,255,255,.2),
     inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
 }
