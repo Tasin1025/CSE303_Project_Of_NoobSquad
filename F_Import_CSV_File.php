@@ -182,6 +182,8 @@ if (isset($_GET["updation"])) {
         $message = '<label class="text-success">Update Done</label>';
     }
 
+    
+
 //  UPDATE backlog_data_t
 //  SET studentID='studentID',
 //edu_year='year',
@@ -282,17 +284,57 @@ if (isset($_GET["updation"])) {
             <h2>STUDENT PERFORMANCE MONITORING SYSTEM</h2>
         </div>
         <div class="tab">
+        <!-- <p><a href="Backlog_Data_Entry.csv">Download TEXT file</a></p> -->
+        
             <form method="post" enctype="multipart/form-data">
                 
                 <input type="file" name="fileToUpload" id="fileToUpload">
                 <input type="submit" name="upload" class="custom-btn btn-11 tablinks" value="Upload">
-                <button class="custom-btn btn-10 tablinks"><a href="F_viewbacklog.php" class="submit_btn_css">View
+                <button class="custom-btn btn-10 tablinks" ><a href="Backlog_Data_Entry.csv">Download CSV file</a> </button>&nbsp;&nbsp;
+                <button class="custom-btn btn-11 tablinks"><a href="F_viewbacklog.php" class="submit_btn_css">View
                         Backlog Data</a></button>
             </form>
         </div>
         <?php
 
+if(isset($_GET['path']))
+{
+//Read the filename
+$filename = $_GET['path'];
+//Check the file exists or not
+if(file_exists($filename)) {
+
+//Define header information
+header('Content-Description: File Transfer');
+header('Content-Type: application/octet-stream');
+header("Cache-Control: no-cache, must-revalidate");
+header("Expires: 0");
+header('Content-Disposition: attachment; filename="'.basename($filename).'"');
+header('Content-Length: ' . filesize($filename));
+header('Pragma: public');
+
+//Clear system output buffer
+flush();
+
+//Read the size of the file
+readfile($filename);
+
+//Terminate from the script
+die();
+}
+else{
+echo "File does not exist.";
+}
+}
+
+?>
+        <?php
+
          echo $message;
+         
+
+
+ 
 
         // if (isset($_POST['submit'])) {
         //     if (isset($_FILES['csv_file']) && $_FILES['csv_file']['error'] == 0) {
