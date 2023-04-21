@@ -178,8 +178,8 @@ session_start();
             const ctx = document.getElementById('myChart').getContext('2d');
             <?php
             foreach ($result as $data) {
-                $co[] = $data['categoryName'];
-                $percent1[] = $data['studNumber'];
+                $name[] = $data['categoryName'];
+                $number[] = $data['studNumber'];
             }
 
             ?>
@@ -189,10 +189,10 @@ session_start();
                 data: {
 
 
-                    labels: <?php echo json_encode($co) ?>,
+                    labels: <?php echo json_encode($name) ?>,
                     datasets: [{
                         label: '<?php echo "Number of Student:"?>',
-                        data: <?php echo json_encode($percent1) ?>,
+                        data: <?php echo json_encode($number) ?>,
                         backgroundColor: [
                             'rgba(153, 102, 255, 0.4)',
                             'rgba(75, 192, 192, 0.6)',
@@ -230,7 +230,7 @@ session_start();
                 }
             });
         </script>
-    <b></b><?php echo $category ?> Enrollment Status In <?php echo $year ?></b>
+    <h3><i><b></b><?php echo $category ?> Enrollment Status In <?php echo $year ?></b></i></h3>
     </div>
     
 
