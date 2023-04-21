@@ -1261,4 +1261,42 @@ CREATE TABLE backlog_section_t (
     CONSTRAINT backlog_section_FK2 FOREIGN KEY (sectionID) REFERENCES section_t(sectionID)
     );
 
+INSERT INTO employee_t(employeeID, password, firstName,lastName) VALUES
+            (1000, 12345, "Tanweer", "Hasan"),    
+            (1234, 12345, "Yusuf", "Mahbubul Islam"),
+            (1313, 12345, "Mahady", "Hasan");
+
+INSERT INTO vc_t(v_employeeID, startDate) VALUES
+            (1000, "2021-02-23");
+            
+INSERT INTO dean_t(d_employeeID, schoolID, startDate) VALUES
+            (1234, "SETS","2020-01-01");
+
+INSERT INTO departmenthead_t(h_employeeID, departmentID, startDate) VALUES
+            (1313, "CSE","2020-01-01");
+           
+
+
+
+
+           
+
+
+
+
+
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
     
