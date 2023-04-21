@@ -7,6 +7,7 @@ if (isset($_POST["upload"])) {
         $filename = explode(".", $_FILES['fileToUpload']['name']);
         if (end($filename) == "csv") {
             $handle = fopen($_FILES['fileToUpload']['tmp_name'], "r");
+            $header = fgetcsv($handle); 
             while ($data = fgetcsv($handle)) {
                 $studentID = mysqli_real_escape_string($conn, $data[0]);
                 $year = mysqli_real_escape_string($conn, $data[1]);
