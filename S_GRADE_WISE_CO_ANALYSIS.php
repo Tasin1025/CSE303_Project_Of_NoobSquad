@@ -12,6 +12,7 @@ include 'connect.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/41c61c6dc3.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -100,9 +101,11 @@ include 'connect.php';
                         <option value="ENG101">ENG101</option>
                     </select>
                 </div>
-                <button name="submit" class="btn btn-primary w-25 mx-0 mt-4" onclick="submitt()">Submit
+                <button name="submit" class="btn btn-primary w-25 mx-0 mt-4" >Submit
                 </button>
+                <br><br>
         </form>
+        
         <?php
 
         if (isset($_POST['submit'])) {

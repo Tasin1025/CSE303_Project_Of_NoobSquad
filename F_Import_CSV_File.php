@@ -15,7 +15,7 @@ if (isset($_POST["upload"])) {
                 $courseID = mysqli_real_escape_string($conn, $data[3]);
                 $section = mysqli_real_escape_string($conn, $data[4]);
                 $marks = mysqli_real_escape_string($conn, $data[5]);
-                $facultyID = mysqli_real_escape_string($conn, $data[6]);
+                $facultyID = $_SESSION['id'];
                 $time = date("Y-m-d H:i:s");
                 $query = "
                     INSERT INTO backlog_data_t (studentID, edu_year, 
