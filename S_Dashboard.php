@@ -36,7 +36,7 @@ $plo = mysqli_query($conn, $sql);
         <div class="content2 flex-con">
             <div>
                 <h4><?php echo $_SESSION['name']; ?> </h4>
-                <small>student</small>
+                <small>Student</small>
             </div>
             <div><a href="#"><img src="icons8-kuroo-48.png" alt=""></a></div>
         </div>

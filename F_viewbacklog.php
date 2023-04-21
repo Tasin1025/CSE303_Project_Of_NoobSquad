@@ -122,9 +122,9 @@ session_start();
                 elseif( $row['obtained_marks'] >= 85 && $row['obtained_marks']<=89)
                     $grade="A-";
                 elseif( $row['obtained_marks'] >= 80 && $row['obtained_marks']<=84)
-                    $grade="B";
-                elseif( $row['obtained_marks'] >= 75 && $row['obtained_marks']<=79)
                     $grade="B+";
+                elseif( $row['obtained_marks'] >= 75 && $row['obtained_marks']<=79)
+                    $grade="B";
                 elseif( $row['obtained_marks'] >= 70 && $row['obtained_marks']<=74)
                     $grade="B-";
                 elseif( $row['obtained_marks'] >= 60 && $row['obtained_marks']<=69)
