@@ -16,7 +16,28 @@ session_start();
 <body>
     <nav class="navigation1">
         <div class="content2 flex-con">
-            <div><h4><?php echo $_SESSION['name']; ?> <br> Higher Authority</h4></div>
+            <div><h4><?php echo $_SESSION['name']; ?> <br> 
+            <?php
+            $id = $_SESSION['id'];
+            //$vcQuery = "SELECT v_employeeID FROM vc_t WHERE v_employeeID = $id";
+            $vcQuery = "SELECT COUNT(*) FROM vc_t WHERE v_employeeID = $id";
+            $vcTable = mysqli_query($conn, $vcQuery);
+            $vcID = mysqli_fetch_row($vcTable);
+
+            $deanQuery = "SELECT COUNT(*) FROM dean_t WHERE d_employeeID = $id";
+            $deanTable = mysqli_query($conn, $deanQuery);
+            $deanID = mysqli_fetch_row($deanTable);
+
+            if($vcID[0] == 1){
+                echo "VC";
+            }
+            elseif($deanID[0]== 1){
+                echo "Dean";
+            }
+            else{
+                echo "Department Head";
+            }
+            ?></h4></div>
             <div><a href="#"><img src="icons8-university-50.png" alt=""></a></div>         
         </div>
 

@@ -25,13 +25,25 @@ if (isset($_POST['id']) && isset($_POST['pass'])) {
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc($result);
         if (mysqli_num_rows($result) === 1) {
+            if (substr($id, 0, 1) === "1") {
+                // the number starts with 1
+               // echo "The number starts with 1.";
+                if ($row['employeeID'] === $id && $row['password'] === $pass) {
+                    //echo "hello " . $row['name'] ;
+                    $_SESSION['name'] = $row['firstName']." " . $row['lastName'];
+                    $_SESSION['id'] = $row['employeeID'];
+                    header("Location: H_Dashboard.php");
+                    exit();
+                } 
+            }else {
+
             if ($row['employeeID'] === $id && $row['password'] === $pass) {
                 //echo "hello " . $row['name'] ;
-                $_SESSION['name'] = $row['firstName'];
+                $_SESSION['name'] = $row['firstName']." " . $row['lastName'];
                 $_SESSION['id'] = $row['employeeID'];
                 header("Location: F_Dashboard.php");
                 exit();
-            } 
+            } }
         } else {
             header("Location: index.php?error = Incorrect ID or Password");
             exit();
