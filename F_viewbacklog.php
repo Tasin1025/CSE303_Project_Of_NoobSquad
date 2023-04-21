@@ -93,7 +93,7 @@ session_start();
         <table class="table table-hover text center">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">Backlog ID</th>
+                    <!-- <th scope="col">Backlog ID</th> -->
                     <th scope="col">Student ID</th>
                     <th scope="col">Grade</th>
                     <th scope="col">Course</th>
@@ -143,7 +143,7 @@ session_start();
                 
                     <tr>
                         <!-- <th scope="row">1</th> -->
-                        <td><?php echo $row['backlogID']; ?></td>
+                        <!-- <td><?php echo $row['backlogID']; ?></td> -->
                         <td><?php echo $row['studentID']; ?></td>
                         <td><?php echo $grade; ?></td>
                         <td><?php echo $row['enrolled_course']; ?></td>

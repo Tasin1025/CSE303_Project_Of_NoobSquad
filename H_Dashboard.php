@@ -93,6 +93,14 @@ session_start();
             </a>
         </li>
         <li class="list">
+                <a href="H_Backlog.php">
+                    <span class="icon">
+                        <i class="fa-solid fa-database fa-xl"></i>
+                    </span>
+                    <span class="title">Backlog Data</span>
+                </a>
+            <li class="list">
+        <li class="list">
             <a href="index.php">
             <span class="icon">
                 <i class="fa-solid fa-person-running fa-xl"></i>
