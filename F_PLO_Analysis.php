@@ -61,12 +61,12 @@ session_start();
             </li>
             <!-- backlog button-->
             <li class="list">
-            <a href="F_Backlog.php">
-            <span class="icon">
-                 <i class="fa-solid fa-database fa-xl"></i>
-            </span>
-            <span class="title">Backlog Data</span>
-            </a>
+                <a href="F_Backlog.php">
+                    <span class="icon">
+                        <i class="fa-solid fa-database fa-xl"></i>
+                    </span>
+                    <span class="title">Backlog Data</span>
+                </a>
             <li class="list">
                 <a href="index.php">
                     <span class="icon">
@@ -103,64 +103,93 @@ session_start();
             include 'connect.php';
 
             $sql = "SELECT plo.ploNum AS ploNum, 
-AVG((ans.markObtained/q.markPerQuestion)*100) AS percent
-FROM registration_t AS r, answer_t AS ans, question_t AS q, 
-co_t AS co, plo_t AS plo
-WHERE r.registrationID=ans.registrationID 
-AND ans.examID=q.examID
-AND ans.answerNum=q.questionNum AND q.coNum=co.coNum 
-AND q.courseID=co.courseID AND co.ploID=plo.ploID 
-AND r.studentID='$studentID'
-GROUP BY plo.ploNum,r.studentID";
-
+                    AVG((ans.markObtained/q.markPerQuestion)*100) AS percent
+                    FROM registration_t AS r, answer_t AS ans, question_t AS q, 
+                    co_t AS co, plo_t AS plo
+                    WHERE r.registrationID=ans.registrationID 
+                    AND ans.examID=q.examID
+                    AND ans.answerNum=q.questionNum AND q.coNum=co.coNum 
+                    AND q.courseID=co.courseID AND co.ploID=plo.ploID 
+                    AND r.studentID='$studentID'
+                    GROUP BY plo.ploNum,r.studentID";
             $plo = mysqli_query($conn, $sql);
-            $sql2="SELECT plo.ploNum AS ploNum, 
-AVG((ans.markObtained/q.markPerQuestion)*100) AS percent
-FROM registration_t AS r, answer_t AS ans, question_t AS q, 
-co_t AS co, plo_t AS plo, student_t AS s, program_t AS p, department_t AS d
-WHERE r.studentID=s.studentID 
-AND r.registrationID=ans.registrationID AND ans.examID=q.examID
-AND ans.answerNum=q.questionNum  
-AND q.coNum=co.coNum AND q.courseID=co.courseID AND co.ploID=plo.ploID 
-AND s.departmentID=d.departmentID
-AND d.schoolID=(SELECT d.schoolID FROM student_t AS s, 
-department_t AS d WHERE s.studentID='$studentID' 
-AND s.departmentID=d.departmentID)
-GROUP BY plo.ploNum";
 
-$result2=mysqli_query($conn,$sql2);
+            $sqlSch = "SELECT plo.ploNum AS ploNum, 
+                    AVG((ans.markObtained/q.markPerQuestion)*100) AS percent
+                    FROM registration_t AS r, answer_t AS ans, question_t AS q, 
+                    co_t AS co, plo_t AS plo, student_t AS s, program_t AS p, department_t AS d
+                    WHERE r.studentID=s.studentID 
+                    AND r.registrationID=ans.registrationID AND ans.examID=q.examID
+                    AND ans.answerNum=q.questionNum  
+                    AND q.coNum=co.coNum AND q.courseID=co.courseID AND co.ploID=plo.ploID 
+                    AND s.departmentID=d.departmentID
+                    AND d.schoolID=(SELECT d.schoolID FROM student_t AS s, 
+                    department_t AS d WHERE s.studentID='$studentID' 
+                    AND s.departmentID=d.departmentID)
+                    GROUP BY plo.ploNum";
+            $resultSch = mysqli_query($conn, $sqlSch);
+
+            $sqlDept = "SELECT plo.ploNum AS ploNum, AVG((ans.markObtained/q.markPerQuestion)*100) 
+                    AS percent
+                    FROM registration_t AS r, answer_t AS ans, question_t AS q, 
+                    co_t AS co, plo_t AS plo, student_t AS s WHERE r.studentID=s.studentID 
+                    AND r.registrationID=ans.registrationID AND ans.examID=q.examID
+                    AND ans.answerNum=q.questionNum 
+                    AND q.coNum=co.coNum AND q.courseID=co.courseID AND co.ploID=plo.ploID
+                    AND s.departmentID=(SELECT s.departmentID FROM student_t AS s 
+                    WHERE s.studentID='$studentID')
+                    GROUP BY plo.ploNum";
+            $resultDept = mysqli_query($conn, $sqlDept);
 
 
-        
-            
-    }
+            $sqlPro = "SELECT plo.ploNum AS ploNum, 
+                    AVG((ans.markObtained/q.markPerQuestion)*100) AS percent
+                    FROM registration_t AS r, answer_t AS ans, question_t AS q, 
+                    co_t AS co, plo_t AS plo, student_t AS s, program_t AS p
+                    WHERE r.studentID=s.studentID 
+                    AND r.registrationID=ans.registrationID AND ans.examID=q.examID
+                    AND ans.answerNum=q.questionNum  
+                    AND q.coNum=co.coNum AND q.courseID=co.courseID AND co.ploID=plo.ploID 
+                    AND s.programID=p.programID
+                    AND s.programID=(SELECT s.programID FROM student_t AS s WHERE s.studentID='$studentID')
+                    GROUP BY plo.ploNum";
+            $resultPro = mysqli_query($conn, $sqlPro);
+        }
+
         ?>
 
         <div class="container">
 
             <div>
-            <h3 style="text-align: center display:flex; margin:auto">Plo Analysis with Department Average </h3>
+                <h3 style="text-align: center; display:flex; margin:auto">Plo Analysis with Department Average </h3>
                 <canvas id="myChart1" width="600" height="450"></canvas>
             </div>
             <div>
-                <h3 style="text-align: center">Plo Analysis with Program Average </h3>
-                <canvas style="" id="myChart" width="600" height="450"></canvas>
+                <h3 style="text-align: center">Plo Analysis with School Average </h3>
+                <canvas style id="myChart" width="600" height="450"></canvas>
             </div>
             <script>
-                
                 const ctx1 = document.getElementById('myChart1').getContext('2d');
                 <?php
                 while ($data = mysqli_fetch_array($plo)) {
 
                     $plonum[] = "PLO" . $data['ploNum'];
                     $percent[] = $data['percent'];
-                    if (rand() % 2 == 0) {
-                        $percent1[] = $data['percent'] - rand(5, 10);
-                        $percent2[] = $data['percent'] + rand(3, 8);
-                    } else {
-                        $percent1[] = $data['percent'] + rand(5, 10);
-                        $percent2[] = $data['percent'] - rand(3, 8);
-                    }
+                }
+                while ($data = mysqli_fetch_array($resultDept)) {
+
+                    //  $plonum[] = "PLO" . $data['ploNum'];
+                    $percentDept[] = $data['percent'];
+                }
+                while ($data = mysqli_fetch_array($resultPro)) {
+
+                    //   $plonum[] = "PLO" . $data['ploNum'];
+                    $percentPro[] = $data['percent'];
+                }
+                while ($data = mysqli_fetch_array($resultSch)) {
+
+                    //  $plonum[] = "PLO" . $data['ploNum'];
+                    $percentSch[] = $data['percent'];
                 }
 
                 ?>
@@ -169,10 +198,9 @@ $result2=mysqli_query($conn,$sql2);
                     type: 'bar',
                     data: {
 
-
                         labels: <?php echo json_encode($plonum) ?>,
                         datasets: [{
-                                label:<?php echo json_encode ("Student ID: $studentID") ?>,
+                                label: <?php echo json_encode("Student ID: $studentID") ?>,
                                 data: <?php echo json_encode($percent) ?>,
                                 backgroundColor: [
 
@@ -188,7 +216,7 @@ $result2=mysqli_query($conn,$sql2);
                             },
                             {
                                 label: ['Dept Average'],
-                                data: <?php echo json_encode($percent1) ?>,
+                                data: <?php echo json_encode($percentDept) ?>,
                                 backgroundColor: [
 
                                     'rgba(255, 99, 132, 0.8)',
@@ -216,9 +244,9 @@ $result2=mysqli_query($conn,$sql2);
                         }
                     }
                 });
-           
+
                 const ctx = document.getElementById('myChart').getContext('2d');
-                
+
 
                 new Chart(ctx, {
                     type: 'bar',
@@ -227,7 +255,7 @@ $result2=mysqli_query($conn,$sql2);
 
                         labels: <?php echo json_encode($plonum) ?>,
                         datasets: [{
-                                label: <?php echo json_encode ("Student ID: $studentID") ?>,
+                                label: <?php echo json_encode("Student ID: $studentID") ?>,
                                 data: <?php echo json_encode($percent) ?>,
                                 backgroundColor: [
 
@@ -243,7 +271,7 @@ $result2=mysqli_query($conn,$sql2);
                             },
                             {
                                 label: ['Program Average'],
-                                data: <?php echo json_encode($percent2) ?>,
+                                data: <?php echo json_encode($percentSch) ?>,
                                 backgroundColor: [
 
                                     'rgb(153, 102, 255,0.8)',
@@ -274,21 +302,13 @@ $result2=mysqli_query($conn,$sql2);
             </script>
         </div>
 
-        <div class="container1" >
-        <div>
-            <h3 style="text-align: center">Plo Analysis with School Average </h3>
+        <div class="container1">
+            <div>
+                <h3 style="text-align: center">Plo Analysis with Program Average </h3>
                 <canvas id="myChart3"></canvas>
             </div>
             <script>
-        const ctx3 = document.getElementById('myChart3').getContext('2d');
-        <?php
-               while ($data2 = mysqli_fetch_assoc($result2)){
-            
-                $percent3[] = $data2['percent'];
-                
-            }
-
-                ?>
+                const ctx3 = document.getElementById('myChart3').getContext('2d');
 
                 new Chart(ctx3, {
                     type: 'bar',
@@ -297,7 +317,7 @@ $result2=mysqli_query($conn,$sql2);
 
                         labels: <?php echo json_encode($plonum) ?>,
                         datasets: [{
-                                label: <?php echo json_encode ("Student ID: $studentID") ?>,
+                                label: <?php echo json_encode("Student ID: $studentID") ?>,
                                 data: <?php echo json_encode($percent) ?>,
                                 backgroundColor: [
 
@@ -313,7 +333,7 @@ $result2=mysqli_query($conn,$sql2);
                             },
                             {
                                 label: ['School Average'],
-                                data: <?php echo json_encode($percent3) ?>,
+                                data: <?php echo json_encode($percentPro) ?>,
                                 backgroundColor: [
 
                                     'rgba(255, 205, 86, 0.6)',
