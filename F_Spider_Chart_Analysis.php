@@ -93,12 +93,12 @@ if (isset($_POST['submit'])) {
             </li>
             <!-- backlog button-->
             <li class="list">
-            <a href="F_Backlog.php">
-            <span class="icon">
-                 <i class="fa-solid fa-database fa-xl"></i>
-            </span>
-            <span class="title">Backlog Data</span>
-            </a>
+                <a href="F_Backlog.php">
+                    <span class="icon">
+                        <i class="fa-solid fa-database fa-xl"></i>
+                    </span>
+                    <span class="title">Backlog Data</span>
+                </a>
             <li class="list">
                 <a href="index.php#">
                     <span class="icon">
@@ -125,7 +125,7 @@ if (isset($_POST['submit'])) {
         <div class="container">
             <!-- <h1>Spider Chart of Po Achieved </h1> -->
             <div>
-                <canvas id="myChart" width="500" height="400"></canvas>
+                <canvas id="myChart" width="600" height="500"></canvas>
             </div>
             <script>
                 const ctx = document.getElementById('myChart').getContext('2d');
@@ -187,7 +187,7 @@ if (isset($_POST['submit'])) {
             </script>
             <!-- <h1>Spider Chart of Co Achieved </h1> -->
             <div>
-                <canvas id="myChart2" width="500" height="400"></canvas>
+                <canvas id="myChart2" width="600" height="500"></canvas>
             </div>
             <script>
                 const ctx2 = document.getElementById('myChart2').getContext('2d');
@@ -243,6 +243,14 @@ if (isset($_POST['submit'])) {
                 });
             </script>
         </div>
+        <br>
+        <h2>
+            <center>
+                <i><b>
+                        <?php if (isset($_POST['submit'])) echo "PLO and CO Achievement of " . $studentID ?>
+                </b></i>
+            </center>
+        </h2>
     </div>
     <script src="main.js"></script>
 </body>

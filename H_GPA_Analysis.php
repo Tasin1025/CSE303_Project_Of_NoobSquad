@@ -292,8 +292,8 @@ session_start();
                 }
             });
         </script>
-        <h3><i><b></b><?php echo $category ?> CGPA In Autumn <?php echo $year ?></b></i></h3>
-        <br><br>
+<h3><i><b></b><?php if (isset($_POST['submit'])) echo $category." CGPA In Autumn ". $year ?>
+</b></i></h3>        <br><br>
         <div>
             <canvas id="myChart2" width="850" height="550"></canvas>
         </div>
@@ -351,8 +351,8 @@ session_start();
                 }
             });
         </script>
-        <h3><i><b></b><?php echo $category ?> CGPA In Spring <?php echo $year ?></b></i></h3>
-        <br><br>
+<h3><i><b></b><?php if (isset($_POST['submit'])) echo $category." CGPA In Spring ". $year ?>
+</b></i></h3>        <br><br>
         <div>
             <canvas id="myChart3" width="850" height="550"></canvas>
         </div>
@@ -410,7 +410,8 @@ session_start();
                 }
             });
         </script>
-        <h3><i><b></b><?php echo $category ?> CGPA In Summer <?php echo $year ?></b></i></h3>
+        <h3><i><b></b><?php if (isset($_POST['submit'])) echo $category." CGPA In Summer ". $year ?>
+</b></i></h3>
     </div>
 
     <script src="main.js"></script>

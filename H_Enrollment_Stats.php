@@ -238,7 +238,8 @@ session_start();
                 }
             });
         </script>
-        <h3><i><b></b><?php echo $category ?> Enrollment Status In <?php echo $year ?></b></i></h3>
+        <h3><i><b></b><?php if (isset($_POST['submit'])) echo $category." Enrollment Status In ". $year ?>
+</b></i></h3>
     </div>
 
 
