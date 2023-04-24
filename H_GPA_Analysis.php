@@ -47,7 +47,7 @@ session_start();
 
         <ul style="top: 48%;">
             <li class="list">
-                <a href="F_Dashboard.php">
+                <a href="H_Dashboard.php">
                     <span class="icon">
                         <i class="fa-solid fa-chart-pie fa-xl"></i>
                     </span>
