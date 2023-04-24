@@ -1225,12 +1225,12 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
            
 INSERT INTO student_t (studentID, firstName, lastName, dateOfBirth, gender, email, phone, address, departmentID, programID, password, enrollmentSemester, enrollmentYear) VALUES
-(2031109, 'Samiul Islam', 'Sourav', '0000-00-00', 'male', '2031109@iub.edu.bd', '131313', 'R-49', 'CSE', 13, '12345', 'Summer', '2020')
+(2031109, 'Samiul Islam', 'Sourav', '0000-00-00', 'male', '2031109@iub.edu.bd', '131313', 'R-49', 'CSE', 13, '12345', 'Summer', '2020'),
 (2031121, 'Hasan', 'Imam', '0000-00-00', 'male', '2031121@iub.edu.bd', '131313', 'R-49', 'CSE', 13, '12345', 'Summer', '2020'),
 (2021757, 'Md. Ezaz', 'Ahamed', '0000-00-00', 'male', '2021757@iub.edu.bd', '131313', 'R-49', 'CSE', 13, '12345', 'Spring', '2020'),
 (2030063, 'Roshni', 'Parvin', '0000-00-00', 'female', '2030063@iub.edu.bd', '131313', 'R-49', 'CSE', 13, '12345', 'Summer', '2020'),
 (2031091, 'Md Tasin', 'Rahman', '0000-00-00', 'male', '2031091@iub.edu.bd', '131313', 'R-49', 'CSE', 13, '12345', 'Summer', '2020'),
-(2031254, 'Toufikul Islam', 'Eyasin NOOB', '0000-00-00', 'male', '2031254@iub.edu.bd', '131313', 'R-49', 'CSE', 13, '12345', 'Summer', '2020')
+(2031254, 'Toufikul Islam', 'Eyasin NOOB', '0000-00-00', 'male', '2031254@iub.edu.bd', '131313', 'R-49', 'CSE', 13, '12345', 'Summer', '2020');
 
 CREATE TABLE backlog_data_t (
     backlogID INTEGER NOT NULL AUTO_INCREMENT,

@@ -194,12 +194,12 @@ session_start();
         <div class="container">
 
             <div>
-                <h3 style="text-align: center display:flex; margin:auto">Plo Analysis with Department Average </h3>
+                <h3 style="text-align: center; display:flex; margin:auto">Plo Analysis with Department Average </h3>
                 <canvas id="myChart1" width="600" height="450"></canvas>
             </div>
             <div>
                 <h3 style="text-align: center">Plo Analysis with School Average </h3>
-                <canvas style="" id="myChart" width="600" height="450"></canvas>
+                <canvas id="myChart" width="600" height="450"></canvas>
             </div>
             <script>
                 const ctx1 = document.getElementById('myChart1').getContext('2d');
