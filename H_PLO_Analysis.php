@@ -194,11 +194,13 @@ session_start();
         <div class="container">
 
             <div>
-                <h3 style="text-align: center; display:flex; margin:auto">Plo Analysis with Department Average </h3>
+                <!-- <h3 style="text-align: center; display:flex; margin:auto">Plo Analysis with Department Average </h3> -->
+                <?php if (isset($_POST['submit'])) echo "Plo Analysis with Department Average "  ?>
                 <canvas id="myChart1" width="600" height="450"></canvas>
             </div>
             <div>
-                <h3 style="text-align: center">Plo Analysis with School Average </h3>
+                <!-- <h3 style="text-align: center">Plo Analysis with School Average </h3> -->
+                <?php if (isset($_POST['submit'])) echo "Plo Analysis with School Average "  ?>
                 <canvas id="myChart" width="600" height="450"></canvas>
             </div>
             <script>
@@ -337,7 +339,8 @@ session_start();
 
         <div class="container1">
             <div>
-                <h3 style="text-align: center">Plo Analysis with Program Average </h3>
+                <!-- <h3 style="text-align: center">Plo Analysis with Program Average </h3> -->
+                <?php if (isset($_POST['submit'])) echo "Plo Analysis with Program Average "  ?>
                 <canvas id="myChart3"></canvas>
             </div>
             <script>
