@@ -17,6 +17,18 @@ GROUP BY plo.ploNum,r.studentID";
 
 $plo = mysqli_query($conn, $sql);
 
+$sqlDept = "SELECT plo.ploNum AS ploNum, AVG((ans.markObtained/q.markPerQuestion)*100) 
+AS percent
+FROM registration_t AS r, answer_t AS ans, question_t AS q, 
+co_t AS co, plo_t AS plo, student_t AS s WHERE r.studentID=s.studentID 
+AND r.registrationID=ans.registrationID AND ans.examID=q.examID
+AND ans.answerNum=q.questionNum 
+AND q.coNum=co.coNum AND q.courseID=co.courseID AND co.ploID=plo.ploID
+AND s.departmentID=(SELECT s.departmentID FROM student_t AS s 
+WHERE s.studentID='$studentID')
+GROUP BY plo.ploNum";
+$resultDept = mysqli_query($conn, $sqlDept);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -196,7 +208,10 @@ $plo = mysqli_query($conn, $sql);
 
                 $plonum[] = "PLO" . $data['ploNum'];
                 $percent[] = $data['percent'];
-                $percent1[] = $data['percent']-10;
+                // $percent1[] = $data['percent']-10;
+            }
+            while ($data = mysqli_fetch_array($resultDept)) {
+                $percentDept[] = $data['percent'];
             }
 
             ?>
@@ -224,7 +239,7 @@ $plo = mysqli_query($conn, $sql);
                     },
                     {
                         label:['Dept Average'],
-                        data: <?php echo json_encode($percent1) ?>,
+                        data: <?php echo json_encode($percentDept) ?>,
                         backgroundColor: [
                             
                             'rgba(255, 99, 132, 0.8)',
