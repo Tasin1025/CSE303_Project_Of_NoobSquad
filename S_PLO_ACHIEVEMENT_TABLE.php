@@ -4,28 +4,28 @@ session_start();
 $studentID = $_SESSION['id'];
 
 $sql = "SELECT po.poNum AS poNum, 
-   AVG((ans.markObtained/q.markPerQuestion)*100) AS percent
-   FROM registration_t AS r, answer_t AS ans, question_t AS q, 
-   co_t AS co, po_t AS po
-   WHERE r.registrationID=ans.registrationID 
-   AND ans.examID=q.examID
-   AND ans.answerNum=q.questionNum AND q.coNum=co.coNum 
-   AND q.courseID=co.courseID AND co.poID=po.poID 
-   AND r.studentID='$studentID'
-   GROUP BY po.poNum";
+        AVG((ans.markObtained/q.markPerQuestion)*100) AS percent
+        FROM registration_t AS r, answer_t AS ans, question_t AS q, 
+        co_t AS co, po_t AS po
+        WHERE r.registrationID=ans.registrationID 
+        AND ans.examID=q.examID
+        AND ans.answerNum=q.questionNum AND q.coNum=co.coNum 
+        AND q.courseID=co.courseID AND co.poID=po.poID 
+        AND r.studentID='$studentID'
+        GROUP BY po.poNum";
 
 $spiderchart = mysqli_query($conn, $sql);
 
 
 $sql1 = "SELECT q.coNum, 
-   AVG((ans.markObtained/q.markPerQuestion)*100) AS percent
-   FROM registration_t AS r, answer_t AS ans, question_t AS q, 
-   co_t AS co, po_t AS po
-   WHERE r.registrationID=ans.registrationID 
-   AND ans.examID=q.examID
-   AND ans.answerNum=q.questionNum AND q.coNum=co.coNum
-   AND r.studentID='$studentID'
-   GROUP BY q.coNum";
+        AVG((ans.markObtained/q.markPerQuestion)*100) AS percent
+        FROM registration_t AS r, answer_t AS ans, question_t AS q, 
+        co_t AS co, po_t AS po
+        WHERE r.registrationID=ans.registrationID 
+        AND ans.examID=q.examID
+        AND ans.answerNum=q.questionNum AND q.coNum=co.coNum
+        AND r.studentID='$studentID'
+        GROUP BY q.coNum";
 $coWise = mysqli_query($conn, $sql1);
 
 ?>
@@ -47,7 +47,7 @@ $coWise = mysqli_query($conn, $sql1);
         <div class="content2 flex-con">
             <div>
                 <h4><?php echo $_SESSION['name']; ?> </h4>
-                <small>student</small>
+                <small>Student</small>
             </div>
             <div><a href="#"><img src="icons8-kuroo-48.png" alt=""></a></div>
         </div>
@@ -82,7 +82,7 @@ $coWise = mysqli_query($conn, $sql1);
                     <span class="icon">
                         <i class="fa-solid fa-bell fa-beat-fade fa-xl"></i>
                     </span>
-                    <span class="title">PLO ACHIEVEMENT TABLE</span>
+                    <span class="title">Spider Chart Analysis</span>
                 </a>
             </li>
             <li class="list">

@@ -1248,25 +1248,7 @@ CREATE TABLE backlog_data_t (
     CONSTRAINT backlog_data_FK2 FOREIGN KEY (facultyID) REFERENCES employee_t(employeeID)
     );
 
-    CREATE TABLE backlog_course_t (
-    backlog_courseID INTEGER NOT NULL AUTO_INCREMENT,
-    backlogID INTEGER NOT NULL, 
-    courseID varchar(6),
 
-    CONSTRAINT backlog_course_PK PRIMARY KEY (backlog_courseID),
-    CONSTRAINT backlog_course_FK1 FOREIGN KEY (backlogID) REFERENCES backlog_data_t (backlogID),
-    CONSTRAINT backlog_course_FK2 FOREIGN KEY (courseID) REFERENCES course_t(courseID)
-    );
-
-CREATE TABLE backlog_section_t (
-    backlog_sectionID INTEGER NOT NULL AUTO_INCREMENT,
-    backlogID INTEGER NOT NULL, 
-    sectionID INT (11),
-
-    CONSTRAINT backlog_section_PK PRIMARY KEY (backlog_sectionID),
-    CONSTRAINT backlog_section_FK1 FOREIGN KEY (backlogID) REFERENCES backlog_data_t (backlogID),
-    CONSTRAINT backlog_section_FK2 FOREIGN KEY (sectionID) REFERENCES section_t(sectionID)
-    );
 
 INSERT INTO employee_t(employeeID, password, firstName,lastName) VALUES
             (1000, 12345, "Tanweer", "Hasan"),    
@@ -1281,28 +1263,4 @@ INSERT INTO dean_t(d_employeeID, schoolID, startDate) VALUES
 
 INSERT INTO departmenthead_t(h_employeeID, departmentID, startDate) VALUES
             (1313, "CSE","2020-01-01");
-
-
-
-
-           
-
-
-
-
-
-           
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+            

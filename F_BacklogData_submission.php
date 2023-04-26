@@ -180,8 +180,6 @@ function submitt() {
 <?php
 
         if (isset($_POST['submit'])) {
-            //include 'connect.php';
-            //session_start();
             $studentID = $_POST['studentID'];
             $semester = $_POST['semester'];
             $year = $_POST['year'];
@@ -191,28 +189,12 @@ function submitt() {
             $facultyID = $_SESSION['id'];
             $timeStamp = date("Y-m-d H:i:s");
 
-            // echo $studentID;
-            // echo $semester;
-            // echo $year;
-            // echo $courseID;
-            // echo $section;
-            // echo $marks;
-            // echo $facultyID;
-            // echo $timeStamp;
-
             $backlogQuery="INSERT INTO backlog_data_t (studentID, edu_year, 
             edu_semester, enrolled_course, enrolled_section, obtained_marks,
             facultyID, time_stamp) VALUES 
             ('$studentID', '$year', '$semester', '$courseID',
             '$section', '$marks', '$facultyID', '$timeStamp')";
             $backlogTable = mysqli_query($conn, $backlogQuery);
-            
-            //Getting backlogID
-            $result = mysqli_query($conn,
-            "SELECT MAX(backlogID) AS backlogID
-            FROM backlog_data_t");
-            $row=mysqli_fetch_assoc($result); 
-            $backlogID=$row['backlogID'];
 
             $sectionQuery="INSERT INTO section_t (sectionNum, semester, courseID, facultyID, year) VALUES 
             ('$section', '$semester', '$courseID','$facultyID', '$year')";
@@ -224,14 +206,6 @@ function submitt() {
             FROM section_t");
             $row=mysqli_fetch_assoc($result); 
             $secID=$row['secID'];
-
-            $backlogCourseQuery = "INSERT INTO backlog_course_t (backlogID, courseID) VALUES
-            ('$backlogID', '$courseID')";
-            $backlogCourseTable = mysqli_query($conn, $backlogCourseQuery);
-
-            $backlogSectionQuery = "INSERT INTO backlog_section_t (backlogID, sectionID) VALUES
-            ('$backlogID', '$secID')";
-            $backlogSectionTable = mysqli_query($conn, $backlogSectionQuery);
 
             $registrationQuery="INSERT INTO registration_t (sectionID, studentID) VALUES 
             ('$secID', '$studentID')";
@@ -273,10 +247,10 @@ function submitt() {
                 $gradePoint=1.0;
             elseif( $marks < 44 )
                 $gradePoint=0.0;
-            $studCoursePerformanceQuery = "INSERT INTO student_course_performance_t(registrationID, totalMarksObtained,gradePoint)
+            $studCoursePerformanceQuery = "INSERT INTO student_course_performance_t(registrationID,
+            totalMarksObtained,gradePoint)
             VALUES ('$regID', '$marks', '$gradePoint')";
             $studCoursePerformanceTable = mysqli_query($conn, $studCoursePerformanceQuery);
-            
             
             //Getting examID
             $result = mysqli_query($conn,
@@ -284,7 +258,6 @@ function submitt() {
             FROM exam_t");
             $row=mysqli_fetch_assoc($result);
             $examID=$row['examID'];
-            
             
             $ansMark = $marks/10;
             $answerQuery="INSERT INTO answer_t (answerDetails, answerNum, markObtained,
@@ -335,7 +308,6 @@ function submitt() {
             $ploTable = mysqli_query($conn, $ploQuery);
             $ploID=$poID;
 
-
             //CO Table
             $coQuery="INSERT INTO co_t (coNum, courseID, ploID, poID) VALUES
             (1, '$courseID', '$ploID', '$poID'),
@@ -344,14 +316,6 @@ function submitt() {
             (4, '$courseID', '$ploID', '$poID')";
             $coTable = mysqli_query($conn, $coQuery);
 
-
-
-            // $backlogCourseQuery = "INSERT INTO  backlog_course_t (backlogID, courseID) VALUES ('$backlogID', '$courseID')";
-            // $backlogCourseTable = mysqli_query($conn, $backlogCourseQuery);
-
-            // $backlogSectionQuery = "INSERT INTO  backlog_section_t (backlogID, secID) VALUES 
-            // ('$backlogID', '$sectionID')";
-            // $backlogSectionTable = mysqli_query($conn, $backlogSectionQuery);
         }
 ?>
     

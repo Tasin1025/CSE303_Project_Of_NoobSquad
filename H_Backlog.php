@@ -143,11 +143,8 @@ session_start();
             <tbody>
                 <?php
                 include 'connect.php';
-                // session_start();
-
                 $backlogData = "SELECT *
-                FROM backlog_data_t;
-                -- WHERE facultyID = '$_SESSION[id]'";
+                FROM backlog_data_t";
                 $result = mysqli_query($conn, $backlogData);
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>

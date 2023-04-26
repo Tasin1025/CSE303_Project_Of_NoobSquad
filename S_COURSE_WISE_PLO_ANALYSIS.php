@@ -17,7 +17,7 @@ session_start();
         <div class="content2 flex-con">
              <div>
                 <h4><?php echo $_SESSION['name']; ?> </h4>
-                <small>student</small>
+                <small>Student</small>
             </div>
             <div><a href="#"><img src="icons8-kuroo-48.png" alt=""></a></div>         
         </div>
@@ -52,7 +52,7 @@ session_start();
             <span class="icon">
                 <i class="fa-solid fa-bell fa-xl"></i>
             </span>
-            <span class="title">PLO ACHIEVEMENT TABLE</span>
+            <span class="title">Spider Chart Analysis</span>
             </a>
         </li>
         <li class="list">

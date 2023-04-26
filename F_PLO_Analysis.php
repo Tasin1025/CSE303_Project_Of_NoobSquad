@@ -162,7 +162,10 @@ session_start();
 
             <div>
                 <!-- <h3 style="text-align: center; display:flex; margin:auto">Plo Analysis with Department Average </h3> -->
+                <h3 style="text-align: center; display:flex; margin:auto"> 
+
                 <?php if (isset($_POST['submit'])) echo "Plo Analysis with Department Average "  ?>
+                </h3>
                 <canvas id="myChart1" width="600" height="450"></canvas>
             </div>
             <div>
